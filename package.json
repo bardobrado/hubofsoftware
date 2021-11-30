@@ -14,6 +14,8 @@
   "dependencies": {
     "@fontsource/fira-mono": "^4.2.2",
     "@lukeed/uuid": "^2.0.0",
-    "cookie": "^0.4.1"
+    "@sveltejs/adapter-node": "^1.0.0-next.43",
+    "cookie": "^0.4.1",
+    "string-commutator": "^1.0.2"
   }
 }

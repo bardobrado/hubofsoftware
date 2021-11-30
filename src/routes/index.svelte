@@ -3,7 +3,23 @@
 </script>
 
 <script>
-	import Counter from '$lib/Counter.svelte';
+	import { onMount } from "svelte";
+	import StringCommutator from "string-commutator";
+
+	let strComute;
+	let origin = "Welcome to string commuter, try clicking next button below.";
+	let final = "That's a nice effect, isn't it? Enjoy typing on the field above.";
+	let part= "Welcome to string commuter, try clicking next button below";
+	let k = 0;
+    let rnd;
+    let rndList = [];
+	let speed = 5;
+    let element = "demo";
+	let running = false;
+	strComute = new StringCommutator(
+			origin, final, part, k, rnd, rndList, speed, element, running
+		);
+
 </script>
 
 <svelte:head>
@@ -18,18 +34,48 @@
 				<img src="svelte-welcome.png" alt="Welcome" />
 			</picture>
 		</div>
-
-		to your new<br />SvelteKit app
 	</h1>
 
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
+	<input
+		id="text1"
+		type="text"
+		bind:value={strComute.origin}
+		placeholder="Coloque seu texto 1 aqui"
+	/>
+	<br />
 
-	<Counter />
+	<input
+		id="text2"
+		type="text"
+		bind:value={strComute.final}
+		placeholder="Coloque seu texto 2 aqui"
+	/>
+	<br />
+	<button
+		class="a"
+		on:click={() => {
+			if (strComute.isRunning() == false) strComute.backText();
+		}}
+	>
+		back
+	</button>
+
+	<p id="demo" >{strComute.origin} </p>
+
+	<button
+		class="a"
+		on:click={() => {
+			if (strComute.isRunning()  == false) strComute.nextText();
+		}}
+	>
+		next
+	</button>
 </section>
 
 <style>
+	#demo {
+		font-size: 3em;
+	}
 	section {
 		display: flex;
 		flex-direction: column;
@@ -55,5 +101,9 @@
 		height: 100%;
 		top: 0;
 		display: block;
+	}
+
+	p {
+		font-size: 2em;
 	}
 </style>

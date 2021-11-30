@@ -1,27 +1,65 @@
 <script>
-	import { page } from '$app/stores';
-	import logo from './svelte-logo.svg';
+	import { page } from "$app/stores";
+	import logo from "./favicon.png";
+	
+	// var k = 0;
+	// onMount(() => {
+	// 	document.getElementById("demo").innerHTML = title2;
+	// 	setTimeout(() => {
+	// 		typeWriter(0);
+	// 	}, speed);
+	// });
+
+	// let title1 = "Your sales place";
+	// let title2 = "Software Hub";
+
+	// var speed = 150;
+
+	// String.prototype.replaceAt = function (index, replacement) {
+	// 	return (
+	// 		this.substr(0, index) +
+	// 		replacement +
+	// 		this.substr(index + replacement.length)
+	// 	);
+	// };
+
+	// function typeWriter(k) {
+	// 	if (k < title1.length) {
+	// 		let title = document.getElementById("demo").innerHTML;
+	// 		if (k >= title.length) {
+	// 			title += title1[k];
+	// 		} else {
+	// 			title = title.replaceAt(k, title1[k]);
+	// 		}
+	// 		document.getElementById("demo").innerHTML = title;
+	// 		setTimeout(() => {
+	// 			typeWriter(k + 1);
+	// 		}, speed);
+	// 	}
+	// }
 </script>
 
 <header>
 	<div class="corner">
-		<a href="https://kit.svelte.dev">
+		<a href="https://hubofsoftware.com">
 			<img src={logo} alt="SvelteKit" />
 		</a>
+
+		<div  class="title" > H.o.S </div>
 	</div>
 
 	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
 		<ul>
-			<li class:active={$page.path === '/'}><a sveltekit:prefetch href="/">Home</a></li>
-			<li class:active={$page.path === '/about'}><a sveltekit:prefetch href="/about">About</a></li>
-			<li class:active={$page.path === '/todos'}><a sveltekit:prefetch href="/todos">Todos</a></li>
+			<li class:active={$page.path === "/"}>
+				<a sveltekit:prefetch href="/">Home</a>
+			</li>
+			<li class:active={$page.path === "/about"}>
+				<a sveltekit:prefetch href="/about">About</a>
+			</li>
+			<li class:active={$page.path === "/todos"}>
+				<a sveltekit:prefetch href="/todos">Todos</a>
+			</li>
 		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
 	</nav>
 
 	<div class="corner">
@@ -34,10 +72,23 @@
 		display: flex;
 		justify-content: space-between;
 	}
+	.title {
+		color: #9ecbf7;
+		font-weight: 700;
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		letter-spacing: 10%;
+		text-decoration: none;
+		padding: 1.2em 1em;
+		transition: color 0.2s linear;
+		justify-content: space-between;
+	}
 
 	.corner {
-		width: 3em;
-		height: 3em;
+		width: 10%;
+		display: flex;
+		position: absolute;
+		z-index: 1;
 	}
 
 	.corner a {
@@ -49,25 +100,15 @@
 	}
 
 	.corner img {
-		width: 2em;
-		height: 2em;
+		width: 3em;
+		height: 3em;
 		object-fit: contain;
 	}
 
 	nav {
-		display: flex;
+		width: 100%;
 		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
+		--background: #0c1829;
 	}
 
 	ul {
@@ -90,7 +131,7 @@
 
 	li.active::before {
 		--size: 6px;
-		content: '';
+		content: "";
 		width: 0;
 		height: 0;
 		position: absolute;
@@ -105,7 +146,7 @@
 		height: 100%;
 		align-items: center;
 		padding: 0 1em;
-		color: var(--heading-color);
+		color: #9ecbf7;
 		font-weight: 700;
 		font-size: 0.8rem;
 		text-transform: uppercase;
